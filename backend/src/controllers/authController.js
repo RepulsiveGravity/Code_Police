@@ -3,7 +3,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.signup = async(req, res) => {
-    const { email, password, cfHandle } = req.body;
+    const { email, password, cfHandle, leetcode_handle } = req.body;
+
+    console.log('Signup Request Recieved:', req.body);
     try{
         // 1. Check if user exists
         const userCheck = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
@@ -19,7 +21,7 @@ exports.signup = async(req, res) => {
 
         // 3. Insert int DB
         const newUser = await pool.query(
-            'INSERT INTO users (email, password, codeforces_handle) VALUES ($1, $2, $3) RETURNING *', [email, hashedPassword, cfHandle]
+            'INSERT INTO users (email, password, codeforces_handle, leetcode_handle) VALUES ($1, $2, $3, $4) RETURNING *', [email, hashedPassword, cfHandle, leetcode_handle]
         );
 
         // 4. Return JWT

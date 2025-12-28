@@ -45,7 +45,7 @@
 # Environment files
 # =========================
 **/.env*
-!**/.env.example
+!.env.example
 
 # =========================
 # Vercel

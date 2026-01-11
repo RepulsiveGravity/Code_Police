@@ -58,8 +58,11 @@ touch .env
 
 # Configure .env (Backend)
 PORT=
+
 DATABASE_URL=
+
 JWT_SECRET=
+
 FRONTEND_URL=http://localhost:3000
 
 # Start Server
